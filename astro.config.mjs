@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import viteSassGlob from '@moritzloewenstein/vite-plugin-sass-glob-import';
+import { viteTouchGlobalScss } from './plugins/vite-touch-global-scss';
 import { exec } from 'node:child_process';
 import chalk from 'chalk';
 import { normalize } from 'node:path';
@@ -57,6 +58,10 @@ export default defineConfig({
     },
     plugins: [
       viteSassGlob(),
+      viteTouchGlobalScss({
+        watchedPaths: ['/src/ui/', '/src/components/', '/src/modules/'],
+        globalScssPath: '/src/styles/index.scss',
+      }),
       {
         name: 'svg-sprite-watcher',
         configureServer(server) {
