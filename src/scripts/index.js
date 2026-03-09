@@ -1,4 +1,4 @@
-import { initModals } from '@components/Modal';
+import { initModals } from '@modules/Modal';
 
 document.addEventListener(
   'DOMContentLoaded',
