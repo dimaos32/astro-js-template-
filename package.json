@@ -11,21 +11,21 @@
     "Firefox ESR"
   ],
   "scripts": {
-    "generate-sprite": "node utils/generate-sprite.mjs",
     "dev": "astro dev",
-    "build": "npm run generate-sprite && npm run lint && astro build",
+    "build": "npm run gen:sprite && npm run lint && astro build",
     "preview": "astro preview",
     "lint:js": "eslint . --ext .js,.astro",
     "lint:css": "stylelint 'src/**/*.scss'",
     "lint": "npm run lint:js && npm run lint:css",
-    "proc:images": "node ./utils/images-optimize.mjs"
+    "proc:images": "node ./utils/images-optimize.mjs",
+    "gen:sprite": "node utils/generate-sprite.mjs"
   },
   "dependencies": {
     "-": "^0.0.1",
     "@csstools/normalize.css": "^12.1.1",
+    "@fluejs/noscroll": "^1.0.0",
     "astro": "^5.17.1",
-    "chalk": "^5.6.2",
-    "scroll-lock": "^2.1.5"
+    "chalk": "^5.6.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -47,6 +47,6 @@
     "stylelint": "^17.4.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "stylelint-scss": "^7.0.0",
-    "svgo": "^4.0.0"
+    "svgo": "^4.0.1"
   }
 }
