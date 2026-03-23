@@ -1,9 +1,20 @@
 @mixin tokens {
+  --color-black: #000000;
+  --color-umbra: #272424;
+  --color-ghost-white: #f7f9ff;
   --color-white: #ffffff;
-  --color-black: #212121;
-  --color-lavender: #f8f5fc;
-  --color-fedora: #58485e;
-  --color-east-side: #b695c2;
 
-  --color-overlay: #{rgba(#212121, 0.7)};
+  --color-olympic-blue: #4f91dc;
+  --color-hydra: #006f9c;
+
+  --color-txt-primary: var(--color-umbra);
+  --color-txt-inverted: var(--color-ghost-white);
+
+  --color-bg-primary: var(--color-white);
+  --color-bg-inverted: var(--color-olympic-blue);
+
+  --color-accent: var(--color-olympic-blue);
+  --color-accent-action: var(--color-hydra);
+
+  --color-overlay: #{rgba(#000000, 0.7)};
 }
