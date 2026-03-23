@@ -16,8 +16,6 @@ body {
   margin: 0;
   padding: 0;
   min-block-size: 100dvh;
-
-  font-size: 100%;
 }
 
 html {
@@ -31,11 +29,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  // оптимизация выравнивания шрифта относительно центра строки
-  text-rendering: optimizelegibility;
-
-  // если по прежнему есть проблемы с выравниванием
-  // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
   scroll-behavior: smooth;
 }
 
@@ -53,10 +46,18 @@ body {
 main {
   flex-grow: 1;
   inline-size: 100%;
-  min-inline-size: 100%;
 }
 
-a {
+:where(p, h1, h2, h3, h4, h5, h6) {
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  text-wrap: balance;
+}
+
+:where(a) {
   text-decoration: none;
   color: inherit;
 
@@ -67,15 +68,18 @@ a {
   }
 }
 
-img,
-video {
+:where(img, video, audio, iframe, canvas) {
   display: block;
   max-inline-size: 100%;
   block-size: auto;
 }
 
-textarea {
-  resize: none;
+:where(svg) {
+  max-inline-size: 100%;
+}
+
+:where(textarea) {
+  resize: vertical;
 }
 
 // chrome autofill background removal
@@ -84,15 +88,21 @@ textarea {
 // rgba не подойдет, сконвертируйте цвет в hex без прозрачности
 // если в стилях уже используется box-shadow есть другое решение -
 // задать к списку транзишенов `background-color 10000000s ease-out`
-input:-webkit-autofill {
+input:is(:autofill, :-webkit-autofill),
+input:is(:autofill, :-webkit-autofill):hover,
+input:is(:autofill, :-webkit-autofill):focus {
   box-shadow: inset 0 0 0 1000px var(--color-white);
-
   -webkit-text-fill-color: var(--color-txt-primary);
 }
 
+:where(button, input, optgroup, select, textarea) {
+  font-family: inherit;
+  font-size: 1em;
+  line-height: inherit;
+}
+
 // firefox placeholder \ invalid fix + ios bdrs
-input,
-textarea {
+:where(input, textarea) {
   border-radius: 0;
 
   &::placeholder {
@@ -104,8 +114,22 @@ textarea {
   }
 }
 
-select {
+:where(select) {
   border-radius: 0;
+}
+
+:where(fieldset, iframe) {
+  border: none;
+}
+
+:where(code, kbd, pre, samp) {
+  font-family: ui-monospace, monospace;
+  font-size: 1em;
+}
+
+:where(table) {
+  border-collapse: collapse;
+  border-color: currentcolor;
 }
 
 // chrome search X removal
@@ -138,21 +162,21 @@ input[type="time"] {
 // ios button \ inputs reset
 select,
 textarea,
-input:matches(
-  [type="email"],
-  [type="number"],
-  [type="password"],
-  [type="search"],
-  [type="tel"],
-  [type="text"],
-  [type="url"]
+input:is(
+  [type="email" i],
+  [type="number" i],
+  [type="password" i],
+  [type="search" i],
+  [type="tel" i],
+  [type="text" i],
+  [type="url" i]
 ) {
   appearance: none;
 }
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type="button" i],
+[type="reset" i],
+[type="submit" i] {
   appearance: none;
 }
