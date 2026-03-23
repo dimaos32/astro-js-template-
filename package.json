@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run gen:sprite && npm run lint && astro build",
+    "build": "npm run lint && astro build",
     "preview": "astro preview",
     "gen:sprite": "node utils/generate-sprite.mjs",
     "lint:js": "eslint . --ext .js,.astro",
