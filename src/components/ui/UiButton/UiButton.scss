@@ -10,21 +10,20 @@
   width: fit-content;
 
   font-size: 18px;
-  color: var(--color-fedora);
+  color: var(--color-txt-inverted);
   font-family: inherit;
 
-  border: 2px solid var(--color-fedora);
+  border: 2px solid var(--color-accent);
   border-radius: 12px;
-  background-color: var(--color-lavender);
+  background-color: var(--color-accent);
   cursor: pointer;
   transition:
-    color var(--transition-default),
-    background-color var(--transition-default);
+    background-color var(--transition-default),
+    border-color var(--transition-default);
 
   @include mixin.hover-focus {
-    color: var(--color-east-side);
-
-    border-color: var(--color-east-side);
+    background-color: var(--color-accent-action);
+    border-color: var(--color-accent-action);
   }
 
   &__icon {
@@ -34,20 +33,6 @@
     svg {
       width: 100%;
       height: 100%;
-      color: var(--color-fedora);
-    }
-  }
-
-  &--fill {
-    border-color: var(--color-white);
-    background-color: var(--color-fedora);
-
-    .button__text {
-      color: var(--color-white);
-    }
-
-    @include mixin.hover-focus {
-      background-color: var(--color-east-side);
     }
   }
 }

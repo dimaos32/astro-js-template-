@@ -60,7 +60,7 @@
     padding: 40px;
 
     border-radius: 20px;
-    background-color: var(--color-white);
+    background-color: var(--color-bg-primary);
   }
 
   &__close-btn {
@@ -87,7 +87,7 @@
       width: 32px;
       height: 4px;
 
-      background-color: var(--color-fedora);
+      background-color: var(--color-accent);
       border-radius: 5px;
 
       transition:
@@ -106,7 +106,7 @@
     @include mixin.hover-focus {
       &::before,
       &::after {
-        background-color: var(--color-east-side);
+        background-color: var(--color-accent-action);
       }
     }
   }
